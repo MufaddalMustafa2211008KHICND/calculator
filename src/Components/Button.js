@@ -8,6 +8,13 @@ const Button = ({ text, className , setButtonState}) => {
         else if(text === '='){
             setButtonState(prev => eval(prev))
         }
+        else if(text ==='+'||text ==='x'||text ==='/'||text ==='-') {
+            setButtonState(prev => {
+                const my = prev.split('')
+                my.pop()
+                return my.join('')+text
+            })
+        }
         else {
             setButtonState(prev => prev+text)
         }
