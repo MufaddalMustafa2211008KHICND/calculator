@@ -1,9 +1,15 @@
 const Button = ({ text, className , setButtonState, buttonState, equalTo, setEqualTo}) => {
     
     const handleClick = () => {
-
-        const my = buttonState.split('')
-        const last = my.pop()
+        let my;
+        let last;
+        try{
+            my = buttonState.split('')
+            last = my.pop()
+        }
+        catch{
+            console.log('Error')
+        }
 
         if(text === 'C') {
             setButtonState('')
@@ -13,8 +19,14 @@ const Button = ({ text, className , setButtonState, buttonState, equalTo, setEqu
         }
         else if(text === '='){
             if(!(last ==='+'||last ==='*'||last ==='/'||last ==='-')){
-                setButtonState(prev => eval(prev).toString())
-                setEqualTo(prev => !prev)
+                try{
+                    const bla = eval(buttonState).toString()
+                    setButtonState(bla)
+                    setEqualTo(prev => !prev)
+                }
+                catch{
+                    console.log('Error')
+                }
             }
         }
         else if(buttonState === '' && !(text ==='+'||text ==='*'||text ==='/'||text ==='-')) {
@@ -22,8 +34,10 @@ const Button = ({ text, className , setButtonState, buttonState, equalTo, setEqu
         }
         else if(buttonState !== '' && (text ==='+'||text ==='*'||text ==='/'||text ==='-')) {
             if(equalTo){
-                setButtonState(text)
-                setEqualTo(prev => !prev)
+                if(!(text ==='+'||text ==='*'||text ==='/'||text ==='-')){
+                    setButtonState(text)
+                    setEqualTo(prev => !prev)
+                }
             }
             else {
                 if(last ==='+'||last ==='*'||last ==='/'||last ==='-'){

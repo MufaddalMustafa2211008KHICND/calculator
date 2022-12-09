@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react"
-import Button from "./Button"
+import { useState } from "react"
 import ButtonContainer from "./ButtonContainer"
 import Display from "./Display"
 
