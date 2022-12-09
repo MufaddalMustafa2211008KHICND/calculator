@@ -6,16 +6,12 @@ import Display from "./Display"
 const Calculator = () => {
     
     const [buttonState, setButtonState] = useState('');
-    const [display, setDisplay ] = useState('');
-
-    useEffect(() => {
-        setDisplay(buttonState)
-    }, [buttonState])
+    // const [display, setDisplay ] = useState('');
 
     return(
         <div className="calculator">
-            <Display display={display}/>
-            <ButtonContainer setButtonState={setButtonState} />
+            <Display display={buttonState}/>
+            <ButtonContainer setButtonState={setButtonState} buttonState={buttonState} />
         </div>
     )
 }
